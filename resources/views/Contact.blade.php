@@ -10,18 +10,22 @@
                 <div class="mb-3">
                     {{Form::label('name', 'Prénom NOM')}}
                     {{Form::text('name', null,['class' => 'form-control'])}}
+                    {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
                 </div>
                 <div class="mb-3">
                     {{Form::label('society', 'Société')}}
                     {{Form::text('society', null,['class' => 'form-control'])}}
+                    {!! $errors->first('society', '<small class="help-block">:message</small>') !!}
                 </div>
                 <div class="mb-3">
-                    {{Form::label('email', 'E-mail')}}
-                    {{Form::email('email', null, ['class' => 'form-control'])}}
+                    {{Form::label('mail', 'E-mail')}}
+                    {{Form::email('mail', null, ['class' => 'form-control'])}}
+                    {!! $errors->first('mail', '<small class="help-block">:message</small>') !!}
                 </div>
                 <div class="mb-3">
                     {{Form::label('message','Message')}}
                     {{Form::textarea('message', null,['class' => 'form-control'])}}
+                    {!! $errors->first('message', '<small class="help-block">:message</small>') !!}
                 </div>
                 <hr class="mb-4"/>
                 <div class="mb-3">
