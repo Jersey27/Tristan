@@ -23,6 +23,11 @@
                     {!! $errors->first('mail', '<small class="help-block">:message</small>') !!}
                 </div>
                 <div class="mb-3">
+                    {{Form::label('subject', 'sujet')}}
+                    {{Form::text('subject', null, ['class' => 'form-control'])}}
+                    {!! $errors->first('subject', '<small class="help-block">:message</small>') !!}
+                </div>
+                <div class="mb-3">
                     {{Form::label('message','Message')}}
                     {{Form::textarea('message', null,['class' => 'form-control'])}}
                     {!! $errors->first('message', '<small class="help-block">:message</small>') !!}

@@ -10,7 +10,6 @@ class Contact extends Model
     
     public $timestamps = true;
 
-    protected $fillable = ['name','society','mail','message'];
-
+    protected $fillable = ['name','society','mail','subject','message'];
 	
 }

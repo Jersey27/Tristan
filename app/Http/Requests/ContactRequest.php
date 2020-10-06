@@ -27,6 +27,7 @@ class ContactRequest extends FormRequest
             'name' => 'bail|required|max:80|alpha',
             'society' => 'max:80',
             'mail' => 'bail|required|email',
+            'subject' => 'bail|required|max:50',
             'message' => 'bail|required'
         ];
     }

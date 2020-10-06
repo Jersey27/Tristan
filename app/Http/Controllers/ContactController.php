@@ -29,6 +29,7 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->society = $request->society;
         $contact->mail = $request->mail;
+        $contact->subject = $request->subject;
         $contact->message = $request->message;
 
         $contact->save();
