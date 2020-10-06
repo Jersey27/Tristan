@@ -24,23 +24,28 @@ route::get('project/page/{n}','ProjectController@ListProject');
 route::get('project/{n}','ProjectController@ShowProject');
 
 route::get('contact','ContactController@index')->name('Contact');
-route::post('contact','ContactController@postContact')->name('postContact');
-
-route::get('admin','AdminController@login');
+route::post('contact','ContactController@store')->name('postContact');
 
 route::get('cv', 'CVController@index')->name('CV');
 
-route::get('admin/blog','Admincontroller@listArticle');
+/*route::get('admin/blog','Admincontroller@listArticle');
 route::get('admin/blog/{n}','AdminController@modifyArticle');
-route::post('admin/blog','AdminController@postArticle');
+route::post('admin/blog','AdminController@postArticle');*/
 
-route::get('admin/project','AdminController@listProject');
+route::get('admin','AdminController@home');
+route::get('admin/cv','AdminController@indexCV')->name('adminCV');
+route::post('admin/cv','AdminController@modifyCV')->name('adminpostCV');
+route::get('admin/contact','AdminController@indexContact');
+route::get('admin/contact/{id}','AdminController@showmessage');
+/*route::get('admin/project','AdminController@listProject');
 route::get('admin/project/{n}','Admincontroller@modifyProject');
 route::post('admin/project','AdminController@postProject');
+route::get('admin/login','AdminController@login');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');*/

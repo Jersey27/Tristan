@@ -1,6 +1,8 @@
 @extends ('template')
 @section ('contenu')
 
-    {{if (success)}}
-    <div class="alert alert"
+    @if ($type === 'success')
+    <div class="alert alert-success">
+        <p>{{$message}}</p>
+    @endif
 @endsection

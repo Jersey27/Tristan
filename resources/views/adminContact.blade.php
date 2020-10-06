@@ -12,14 +12,19 @@
     </thead>
     <tbody>
     @foreach ($contacts as $contact)
-      <tr>
-        <th>{{$contact->id}}</th>
-        <td>{{$contact->name}}</td>
-        <td>{{$contact->mail}}</td>
-        <td>{{$contact->subject}}</td>
-      </tr>
+        <tr data-href="{{url('/admin/contact', $contact->id)}}">
+            <th>{{$contact->id}}</th>
+            <td>{{$contact->name}}</td>
+            <td>{{$contact->mail}}</td>
+            <td>{{$contact->subject}}</td>
+        </tr>
     @endforeach
     </tbody>
   </table>
 </div>
+<script>
+$('tr[data-href]').on("click", function() {
+    document.location = $(this).data('href');
+});
+</script>
 @endsection
