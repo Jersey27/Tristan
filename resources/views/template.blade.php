@@ -19,9 +19,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body class="">
-		<header class="d-flex flex-row flex-md-row p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<h1 class="my-0 mr-md-auto font-weight-normal navbar-brand"><a href="{{route('welcome')}}">Tristan Lefèvre</a></h1>
+		<header class="mb-3 border-bottom shadow-sm">
+			<nav class="navbar navbar-expand navbar-dark bg-dark">
+				<a class="navbar-brand" href="{{route('welcome')}}">Tristan Lefèvre</a>
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav mr-auto">
 						<!--<li class="nav-item"><a class="nav-link" href="{{ route('Articles') }}">Blog</a></li>
@@ -32,11 +32,8 @@
 				</div>
 			</nav>
 		</header>
-		<div class="main-page">
+		<div class="main-page cover-body">
 			@yield('contenu')
 		</div>
-		<footer class="fixed-bottom footer mt-auto py-3">
-			<div>Site réalisé par mes soins</div>
-		</footer>
 	</body>
 </html>

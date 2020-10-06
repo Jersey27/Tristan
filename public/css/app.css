@@ -25304,9 +25304,11 @@ a.text-dark:focus {
   }
 }
 
-h1.a:focus,
-h1.a:active,
-h1.a:hover {
-  color: black;
+.body-cover {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
 }
 
