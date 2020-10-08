@@ -35,6 +35,11 @@ route::post('admin/blog','AdminController@postArticle');*/
 route::get('admin','AdminController@home');
 route::get('admin/cv','AdminController@indexCV')->name('adminCV');
 route::post('admin/cv','AdminController@modifyCV')->name('adminpostCV');
+
+route::post('admin/cv/{section}','AdminController@addCV')->name('addCV');
+route::patch('admin/cv/{section}/{id}','AdminController@modifyCV')->name('modifyCV');
+route::delete('admin/cv/{section}/{id}','AdminController@removeCV')->name('removeCV');
+
 route::get('admin/contact','AdminController@indexContact');
 route::get('admin/contact/{id}','AdminController@showmessage');
 /*route::get('admin/project','AdminController@listProject');

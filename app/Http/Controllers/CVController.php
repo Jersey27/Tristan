@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\competence;
+use App\experience;
+use App\formation;
+use App\langage;
 
 class CVController extends Controller
 {
     public function index() {
 
-        $experiences = [['id' => 'test1', 'name' => 'test1', 'description' => 'Lorem Ipsum'], ['id' => 'test2', 'name' => 'test 2', 'description' => 'Lorem Ipsum']];
-        $competences = [['id' => 'test1', 'name' => 'test 1', 'level' => 10, 'description' => 'Lorem Ipsum'],['id' => 'test2', 'name' => 'test 2', 'level' => 95, 'description' => 'Lorem Ipsum']];
-        return view('CV', ['experiences' => $experiences, 'competences' => $competences]);
+        $experiences = DB::table('experiences')->get();
+        $competences = DB::table('competences')->get();
+        $formations = DB::table('formations')->get();
+        $langages = DB::table('langages')->get();
+        return view('CV', ['experiences' => $experiences, 'competences' => $competences, 'formations' => $formations,'langages' => $langages]);
     }
 }

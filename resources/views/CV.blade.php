@@ -7,13 +7,12 @@
                     <h1>expérience</h1>
                     <li class="list-group">
                     @foreach ($experiences as $experience)
-                        <ul class="list-group-item mb-3 {{$experience['id']}}"> 
-                            <h2>{{$experience["name"]}}</h2>
+                        <ul class="list-group-item mb-0"> 
+                            <h2>{{$experience->titre}}</h2>
                             <hr>
-                            <div class="desc desc-{{$experience['id']}}" style='display:none'>
-                                <p>{{$experience["description"]}}</p>
+                            <div class="">
+                                <p>{{$experience->description}}</p>
                             </div>
-                            <a href="#" class="desc-btn">montrer détails</a>
                         </ul>
                     @endforeach
                     </li>
@@ -22,14 +21,12 @@
                 <h1>compétences</h1>
                     <li class="list-group">
                         @foreach ($competences as $competence)
-                            <ul class="list-group-item mb-3">
-                                <h2>{{$competence["name"]}}</h2>
-                                <progress class="progress-bar" max="100" value="{{$competence['level']}}"></progress>
+                            <ul class="list-group-item mb-0">
+                                <h2>{{$competence->titre}}</h2>
                                 <hr>
-                                <div class="desc" style="display:none">
-                                    <p>{{$competence["description"]}}</p>
+                                <div class="desc">
+                                    <p>{{$competence->description}}</p>
                                 </div>
-                                <a href="#" class="desc-btn">montrer détails</a>
                             </ul>
                         @endforeach
                     </li>    
@@ -37,46 +34,33 @@
                 <div class="">
                     <h1>formation/qualifications</h1>
                     <li class="list-group">
-                        <ul class="list-group-item mb-3">
+                        @foreach ($formations as $formation)
+                        <ul class="list-group-item mb-0">
                             <div class='row mx-0 align-items-center justify-content-between'>
                                 <div class='column align-items-center'>
-                                    <h2 class="my-0">Titre Formation</h2>
-                                    <p class="text-center">date</p>
+                                    <h2 class="my-0">{{$formation->titre}}</h2>
+                                    <p class="text-center">{{$formation->date}}</p>
                                 </div>
                                 <img class="my-auto" src="https://picsum.photos/64">
                             </div>
                             <hr>
-                            <p>Lorem Issou</p>
+                            <p>{{$formation->description}}</p>
                         </ul>
+                        @endforeach
                     </li>
                 </div>
             </div>
             <div class="col-md-4 order-md-2 mb-4">
             <h1>Langue</h1>
             <li class="list-group">
-
+            @foreach ($langages as $langage)
                 <ul class="list-group-item mb-3">
-                    <h2>Anglais</h2>
-                    <progress class="progress-bar" mas="100"></progress>
-                    <p>niveau C1</p>
+                    <h2>{{$langage->titre}}</h2>
+                    <p>{{$langage->description}}</p>
                 </ul>
+            @endforeach
             </li>
         </div>
     </div>
-    </main>
-    <script>
-        $(".desc-btn").click(function(event) {
-            $target = $(event.target).parent().find(".desc");
-            if ($target.is(':hidden'))
-            {
-                $target.show();
-                $(event.target).html('masquer détails');
-            } 
-            else
-            {
-                $target.hide();
-                $(event.target).html('montrer détails');
-            }
-        })
-    </script>
+</main>
 @endsection
