@@ -9,19 +9,14 @@
 		<style> textarea { resize: none; } </style>
 		<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
 		<link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-		
-		<script src="https://unpkg.com/@popperjs/core@2"></script>
-		<script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
-		<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
-		</script>
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	</head>
     </head>
     <body>
         <header>
-			<nav>
+			<nav class="navbar">
 				<ul>
 					<li><a href="{{url('admin/cv')}}">CV</a></li>
 					<li><a href="{{url('admin/contact')}}">messages</a></li>
