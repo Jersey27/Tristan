@@ -1,6 +1,6 @@
 @extends ('template')
 @section ('contenu')
-    <main class="container border border-light shadow p-5 rounded rounded-lg">
+    <main class="container bg-transparent border-0 border-light shadow p-5 rounded rounded-lg">
         <div class="row">
             <div class="col-md-8 order-md-1">
                 <div class="">
@@ -9,6 +9,8 @@
                     @foreach ($experiences as $experience)
                         <ul class="list-group-item mb-0"> 
                             <h2>{{$experience->titre}}</h2>
+                            <p class="font-weight-bold mb-0">{{$experience->date}}</p>
+                            <p class="font-weight-bold text-secondary">{{$experience->company}}</p>
                             <hr>
                             <div class="">
                                 <p>{{$experience->description}}</p>

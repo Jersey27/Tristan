@@ -20,7 +20,7 @@ Route::get('articles','BlogController@index')->name('Articles');
 Route::get('article/search/{search}/{n}',"BlogController@list");
 
 
-route::get('project/page/{n}','ProjectController@ListProject');
+route::get('project','ProjectController@index')->name('Project');
 route::get('project/{n}','ProjectController@ShowProject');
 
 route::get('contact','ContactController@index')->name('Contact');
@@ -32,25 +32,23 @@ route::get('cv', 'CVController@index')->name('CV');
 route::get('admin/blog/{n}','AdminController@modifyArticle');
 route::post('admin/blog','AdminController@postArticle');*/
 
-route::get('admin','AdminController@home');
-route::get('admin/cv','AdminController@indexCV')->name('adminCV');
-route::post('admin/cv','AdminController@modifyCV')->name('adminpostCV');
+route::get('admin','AdminController@home')->middleware('auth');
+route::get('admin/cv','AdminController@indexCV')->name('adminCV')->middleware('auth');
+route::post('admin/cv/{section}','AdminController@addCV')->name('addCV')->middleware('auth');
+route::patch('admin/cv/{section}/{id}','AdminController@modifyCV')->name('modifyCV')->middleware('auth');
+route::delete('admin/cv/{section}/{id}','AdminController@removeCV')->name('removeCV')->middleware('auth');
 
-route::post('admin/cv/{section}','AdminController@addCV')->name('addCV');
-route::patch('admin/cv/{section}/{id}','AdminController@modifyCV')->name('modifyCV');
-route::delete('admin/cv/{section}/{id}','AdminController@removeCV')->name('removeCV');
+route::get('admin/contact','AdminController@indexContact')->middleware('auth');
+route::get('admin/contact/{id}','AdminController@showmessage')->middleware('auth');
 
-route::get('admin/contact','AdminController@indexContact');
-route::get('admin/contact/{id}','AdminController@showmessage');
-/*route::get('admin/project','AdminController@listProject');
-route::get('admin/project/{n}','Admincontroller@modifyProject');
-route::post('admin/project','AdminController@postProject');
-route::get('admin/login','AdminController@login');
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
+route::get('admin/project','AdminController@indexProject')->name('indexProject')->middleware('auth');
+route::get('admin/project/{n}','AdminController@modifyProject')->middleware('auth');
+route::get('admin/project/add','AdminController@createProject')->middleware('auth');
+route::post('admin/project','AdminController@confirmCreateProject')->middleware('auth');
+route::patch('admin/project','AdminController@confirmModifyProject')->middleware('auth');
+route::delete('admin/project','AdminController@deleteProject')->middleware('auth');
+route::get('admin/login','AdminController@login')->middleware('auth');
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');*/
+Route::get('/home', 'HomeController@index')->name('home');

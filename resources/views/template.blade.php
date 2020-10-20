@@ -13,18 +13,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		
-	<body class="">
-		<header class="mb-3 border-bottom shadow-sm">
+	<body class="bg-light" style="">
+		<header class="mb-3 border0 shadow-sm">
 			<nav class="navbar navbar-expand navbar-dark bg-dark">
 				<a class="navbar-brand" href="{{route('welcome')}}">Tristan Lefèvre</a>
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav mr-auto">
-						<!--<li class="nav-item"><a class="nav-link" href="{{ route('Articles') }}">Blog</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Projet</a></li>-->
-						<li class="nav-item"><a class="nav-link" href="{{route('CV')}}">CV</a></li>
+						<!--<li class="nav-item"><a class="nav-link" href="{{ route('Articles') }}">Blog</a></li>-->
+						<li class="nav-item"><a class="nav-link" href="{{ route('Project') }}">Projet</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ route('CV') }}">CV</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ route('Contact')}}">Contact</a></li>
+						<div class="ml-auto">
+							<li class="nav-item"></li>
+						</div>
 					</ul>
 				</div>
+				@guest
+				<div class="nav-item"><a class="btn btn-primary" href="{{ route('login') }}">Connexion</a><div>
+				@else
+				<div class="nav-item d-flex flex-row">
+					<a class="btn btn-success mx-1" href="{{url('admin')}}">Admin</a>
+					{{Form::open(array('route' => 'logout', 'method' => 'post'))}}
+						{{Form::submit('Deconnexion',['class' => 'btn btn-danger mx-1'])}}
+					{{Form::close()}}
+				</div>
+				@endguest
 			</nav>
 		</header>
 		<div class="main-page cover-body">

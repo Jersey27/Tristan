@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use App\competence;
 use App\experience;
 use App\formation;
 use App\langage;
+use App\project;
+use App\File;
 
 class AdminController extends Controller
 {
@@ -28,6 +31,10 @@ class AdminController extends Controller
         $contacts = DB::table('contacts')->select('id','name', 'mail', 'subject')->get();
         return view('adminContact', ['contacts' => $contacts]);
     }
+    public function indexProject() {
+        $projects = DB::table('projects')->select('project_id','titre','short_description')->get();
+        return view('adminProject', ['projects' => $projects]);
+    }
     public function showmessage($id) {
         $contact = DB::table('contacts')->where('id', $id)->first();
         return view('adminContactMessage',['contact' => $contact]);
@@ -37,6 +44,8 @@ class AdminController extends Controller
             case "experience":
                 $experience = new experience();
                 $experience->titre = $request->titre;
+                $experience->date = $request->date;
+                $experience->company = $request->company;
                 $experience->description = $request->description;
 
                 $experience->save();
@@ -70,6 +79,17 @@ class AdminController extends Controller
             return redirect()->route('indexCV');
         }
     }
+    public function confirmCreateproject(Request $request) {
+        $project = new Project();
+        $project->titre = $request->titre;
+        $project->short_description = $request->short_description;
+        $project->description = $request->description;
+        $project->save();
+        return redirect()->route('indexProject');
+    }
+    public function createproject() {
+        return view('adminProjectForm');
+    }
     public function modifycv($section, $id, Request $request) {
         switch ($section) {
             case "experience":
@@ -93,6 +113,13 @@ class AdminController extends Controller
             return redirect()->route('indexCV');
         }
     }
+    public function modifyproject($id) {
+        $project = DB::table('projects')->where('project_id', $id)->first();
+        return view('adminProjectForm', ['id' => $id, 'project' => $project]);
+    }
+    public function ConfirmModifyProject() {
+        
+    }
     public function removeCV($section, $id, Request $request) {
         switch ($section) {
             case "experience":
@@ -115,5 +142,8 @@ class AdminController extends Controller
 
             return redirect()->route('indexCV');
         }
+    }
+    public function removeProject(Request $request) {
+        return view('');
     }
 }
