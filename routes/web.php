@@ -34,19 +34,19 @@ route::post('admin/blog','AdminController@postArticle');*/
 
 route::get('admin','AdminController@home')->middleware('auth');
 route::get('admin/cv','AdminController@indexCV')->name('adminCV')->middleware('auth');
-route::post('admin/cv/{section}','AdminController@addCV')->name('addCV')->middleware('auth');
-route::patch('admin/cv/{section}/{id}','AdminController@modifyCV')->name('modifyCV')->middleware('auth');
-route::delete('admin/cv/{section}/{id}','AdminController@removeCV')->name('removeCV')->middleware('auth');
+route::post('admin/cv','AdminController@addCV')->name('addCV')->middleware('auth');
+route::put('admin/cv','AdminController@modifyCV')->name('modifyCV')->middleware('auth');
+route::delete('admin/cv','AdminController@removeCV')->name('removeCV')->middleware('auth');
 
 route::get('admin/contact','AdminController@indexContact')->middleware('auth');
 route::get('admin/contact/{id}','AdminController@showmessage')->middleware('auth');
 
 route::get('admin/project','AdminController@indexProject')->name('indexProject')->middleware('auth');
-route::get('admin/project/{n}','AdminController@modifyProject')->middleware('auth');
+route::get('admin/project/{id}','AdminController@modifyProject')->middleware('auth');
 route::get('admin/project/add','AdminController@createProject')->middleware('auth');
 route::post('admin/project','AdminController@confirmCreateProject')->middleware('auth');
-route::patch('admin/project','AdminController@confirmModifyProject')->middleware('auth');
-route::delete('admin/project','AdminController@deleteProject')->middleware('auth');
+route::put('admin/project','AdminController@confirmModifyProject')->middleware('auth');
+route::delete('admin/project/{id}','AdminController@removeProject')->middleware('auth');
 route::get('admin/login','AdminController@login')->middleware('auth');
 
 Auth::routes(['register' => false]);
