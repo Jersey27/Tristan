@@ -6,12 +6,18 @@
         @foreach ($projects as $project)
         <ul class="list-group-item d-flex flex-row justify-content-around" class="d-flex flex-row">
             <a class="border w-100" href="{{url('admin/project',$project->project_id)}}">
-                <div class="flex-grow-2 d-flex flex-row justify-content-around">
-                    <p>{{$project->titre}}</p>
-                    <p>{{$project->short_description}}</p>
+                <div class="flex-grow-2 d-flex flex-row justify-content-between px-3">
+                    <div>
+                        <p>{{$project->titre}}</p>
+                    </div>
+                    <div class="flex-grow-2">
+                        <p>{{$project->short_description}}</p>
+                    </div>
                 </div>
             </a>
-            <a href="#" class="btn btn-danger">supprimer</a>
+            {{Form::open(array('action'=>array('AdminController@removeProject','id',$project->project_id), 'method' => 'DELETE'))}}
+                {{Form::submit('supprimer',['class' => 'btn btn-danger'])}}
+            {{Form::close()}}
         <ul>
         @endforeach
     </li>

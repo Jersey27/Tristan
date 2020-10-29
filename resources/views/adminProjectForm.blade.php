@@ -3,7 +3,7 @@
 
 <div class="">
     <p>
-    @if (isset($project->id))
+    @if (isset($project->project_id))
         <h2>modifier le projet {{$project->titre}}</h2>
     @else
         <h2>ajouter un projet</h2>
@@ -11,30 +11,36 @@
     </p>
 </div>
 <div>
-    @if (isset($id))
-        {{Form::open(array('action' => 'AdminController@confirmModifyProject','file' => true, 'method' => 'patch'))}}
+    @if (isset($project->project_id))
+        {{Form::open(array('action' => 'AdminController@confirmModifyProject','files' => true, 'method' => 'put'))}}
         {{Form::label('titre', 'titre du projet')}}
         {{Form::text('titre', $project->titre, ['class' => 'form-control'])}}
 
         {{Form::label('short_description', 'phrase descriptive du projet')}}
         {{Form::text('short_description', $project->short_description, ['class' => 'form-control'])}}
 
+        {{Form::hidden('project_id', $project->project_id)}}
+        {{Form::file('images', ['class' => 'form-control-file'])}}
+
         {{Form::label('description', 'description')}}
         {{Form::textarea('description', $project->description, ['class' => 'form-control'])}}
+        {{Form::submit('modifier',['class' => 'btn btn-warning'])}}
+        {{Form::close()}}
     @else
-        {{Form::open(array('action' => 'AdminController@confirmCreateProject', 'method' => 'post', 'file' => true))}}
+        {{Form::open(array('action' => 'AdminController@confirmCreateProject', 'method' => 'post', 'files' => true))}}
         {{Form::label('titre', 'titre du projet')}}
         {{Form::text('titre', null, ['class' => 'form-control'])}}
 
         {{Form::label('short_description', 'phrase descriptive du projet')}}
         {{Form::text('short_description', null, ['class' => 'form-control'])}}
 
+        {{Form::file('images', ['class' => 'form-control-file'])}}
+
         {{Form::label('description', 'description')}}
         {{Form::textarea('description', null, ['class' => 'form-control'])}}
+        {{Form::submit('Ajouter',['class' => 'btn btn-success'])}}
+        {{Form::close()}}
     @endif
-    <!--{{Form::file('image', null, ['class' => 'form-control'])}}-->
-    {{Form::submit('Ajouter',['class' => 'btn btn-success'])}}
-    {{Form::close()}}
 </div>
 
 
