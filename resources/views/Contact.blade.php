@@ -1,9 +1,9 @@
 @extends ('template')
 
 @section ('contenu')
-    <div class="w-50 container">   
+    <div class="container bg-white border-0 border-light shadow p-5 rounded rounded-lg">   
     <h1 class="h3 mb-3 font-weight-normal text-center">Contactez-moi</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut dictum nisi. Aliquam et ex in orci semper mattis ac ut nisi. Nullam scelerisque congue tristique.</p>
+    <p>Un projet, des questions sur mon cv? N'hésitez pas à me contacter ici</p>
         <div class="row">
             <div class="col-md-8 order-md-1">
             {{  Form::open(array('route' => 'postContact', 'files' => true))}}
@@ -33,10 +33,10 @@
                     {!! $errors->first('message', '<small class="help-block">:message</small>') !!}
                 </div>
                 <hr class="mb-4"/>
-                <div class="mb-3">
+                <!--<div class="mb-3">
                     {{Form::label('files','Fichier complémentaire')}}
                     {{Form::file('files', null, ['class' => 'form-control'])}}
-                </div>
+                </div>-->
                 <div class='mb-3'>
                     {{Form::submit('Envoyer',['class' => 'btn btn-primary btn-lg btn-block'])}}
                 </div>

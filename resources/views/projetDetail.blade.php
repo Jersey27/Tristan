@@ -13,7 +13,7 @@
             </div>
             <div class="w-50">
                 @if (isset($project->image))
-                <a href="{{Storage::disk('photos')->url($project->image)}}"><img class="w-100" src="{{Storage::disk('public')->url($project->image)}}"></a>
+                <a href="{{Storage::disk('photos')->url($project->image)}}"><img class="w-100" src="{{Storage::disk('photos')->url($project->image)}}"></a>
                 @else
                 <img src="https://picsum.photos/500/250"/>
                 @endif
