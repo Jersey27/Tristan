@@ -224,24 +224,23 @@
                     <div class="d-flex flex-row">
                         {{  Form::open(array('route' => 'modifyCV', 'method' => 'put', 'id' => 'cvForm', 'class' => 'flex-grow-1 d-flex justify-content-between mx-1'))}}
                             <div class="mx-1">
-                            {{Form::label('titre', 'titre')}}
-                            {{Form::text('titre', $langage->titre ,['class' => 'form-control'])}}
+                                {{Form::label('titre', 'titre')}}
+                                {{Form::text('titre', $langage->titre ,['class' => 'form-control'])}}
                             </div>
                             <div class="flex-grow-1 mx-1">
-                            {{Form::label('description', 'description')}}
-                            {{Form::text('description', $langage->description ,['class' => 'form-control'])}}
+                                {{Form::label('description', 'description')}}
+                                {{Form::text('description', $langage->description ,['class' => 'form-control'])}}
                             </div>
                             {{Form::hidden('section','langage')}}
                             {{Form::hidden('id', $langage->id)}}
                             {{Form::submit('Modifier',['class' => 'btn btn-warning btn-block w-auto mx-1'])}}
-                            {{  Form::close()}}
-                            {{Form::open(array('route' => 'removeCV', 'method' => 'delete'))}}
+                        {{  Form::close()}}
+                        {{Form::open(array('route' => 'removeCV', 'method' => 'delete'))}}
                             {{Form::hidden('section','langage')}}
                             {{Form::hidden('id', $langage->id)}}
                             {{Form::submit('supprimer',['class' => 'btn btn-danger btn-block w-auto mx-1'])}}
-                            {{Form::close()}}
-                            </div>
-                        </div>
+                        {{Form::close()}}
+                    </div>
                 </div>
             </ul>
             @endforeach

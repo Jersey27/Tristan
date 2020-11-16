@@ -78,8 +78,8 @@ class AdminCVController extends Controller
                 $langage->save();
             break;
 
-            return redirect()->route('indexCV');
         }
+        return redirect()->back();
     }
     /**
      * Modifie un élément du cv en fonction du formulaire utilisé
@@ -112,9 +112,8 @@ class AdminCVController extends Controller
                 $langage = langage::find($request->id);
                 $langage->update(['titre'=> $request->titre, 'niveau' => $request->niveau, 'description' => $request->description]);
             break;
-
-            return redirect()->route('indexCV');
         }
+        return redirect()->back();
     }
     /**
      * Supprime un élément du cv en fonction du formulaire utilisé
@@ -141,7 +140,7 @@ class AdminCVController extends Controller
                 $langage->delete();
             break;
 
-            return response()->json(['success' => 'element supprimé']);
         }
+        return redirect()->back();
     }
 }

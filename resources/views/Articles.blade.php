@@ -1,14 +1,16 @@
 @extends ('template')
 @section ('contenu')
-	<br>
-	<div class="">
-		<ul>
-            <li>
+	<div class="container">
+		<li class="list-group">
+            @foreach($articles as $article )
+            <ul class="list-group-item">
                 <div>
-                    <h2>titre<h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio iusto esse praesentium beatae quos voluptas at, rerum sunt eligendi dolorem eaque dolor consequatur recusandae aliquam, numquam optio ab corporis impedit.</p>
+                    <a href="{{route('getBlog', $article->id)}}">
+                        <h2>{{$article->name}}</h2>
+                    </a>
                 </div>
-            </li>
-        </ul>
+            </ul>
+            @endforeach
+        </li>
 	</div>
 @endsection
