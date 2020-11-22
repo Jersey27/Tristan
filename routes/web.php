@@ -36,12 +36,12 @@ route::group(["prefix"=>"admin","namespace"=>"Admin"],function() {
     route::put('cv','AdminCVController@modifyCV')->name('modifyCV')->middleware('auth');
     route::delete('cv','AdminCVController@removeCV')->name('removeCV')->middleware('auth');
 
-    route::get('blog','AdminArticlecontroller@index')->name('adminBlog')->middleware('auth');
+    route::get('blog','AdminArticleController@index')->name('adminBlog')->middleware('auth');
     route::get('blog/add','AdminArticleController@newArticle')->name('newBlog')->middleware('auth');
     route::get('blog/{n}','AdminArticleController@modifyArticle')->name('modifyBlog')->middleware('auth');
     route::post('blog','AdminArticleController@postNewArticle')->name('postNewBlog')->middleware('auth');
     route::put('blog','AdminArticleController@postArticle')->name('postBlog')->middleware('auth');
-    route::delete('blog','AdminArticleController@removeArticle')->name('removeBlog')->middleware('auth');
+    route::delete('blog/{id}','AdminArticleController@removeArticle')->name('removeBlog')->middleware('auth');
 
     route::get('project','AdminProjectController@indexProject')->name('indexProject')->middleware('auth');
     route::get('project/{id}','AdminProjectController@modifyProject')->middleware('auth');
@@ -52,8 +52,7 @@ route::group(["prefix"=>"admin","namespace"=>"Admin"],function() {
 
     route::get('contact','AdminContactController@indexContact')->middleware('auth');
     route::get('contact/{id}','AdminContactController@showmessage')->middleware('auth');
-    route::get('login','AdminContactController@login')->middleware('auth');
 });
-Auth::routes(['register' => false]);
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['register' => false, 'password' => false]);
+Route::post('try/login','Auth\LoginController@vuelogin')->name('vueLogin');
+Route::get('home', 'HomeController@index')->name('home');
