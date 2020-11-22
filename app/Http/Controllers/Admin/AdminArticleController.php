@@ -37,8 +37,8 @@ class AdminArticleController extends Controller
         return redirect()->route('adminBlog');
     }
 
-    public function postArticle($id, Request $request) {
-        $article = Article::find($id);
+    public function postArticle(Request $request) {
+        $article = Article::find($request->id);
         $article->update(['name' => $request->nameArticle, 'text' => $request->textArticle]);
         return redirect()->route('adminBlog');
     }

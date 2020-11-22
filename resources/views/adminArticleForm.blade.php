@@ -12,7 +12,7 @@
 </div>
 <div>
     @if (isset($article->id))
-        {{Form::open(array('route' => 'postBlog', 'method' => 'put'))}}
+        {{Form::open(array('route'=>array('postBlog'), 'method' => 'put'))}}
             {{Form::label('nameArticle', 'titre de l\'article')}}
             {{Form::text('nameArticle', $article->name, ['class' => 'form-control'])}}
 

@@ -17,7 +17,7 @@ class ArticleController extends Controller
 
 	public function index()
 	{
-		$articles = DB::table('Articles')->get();
+		$articles = DB::table('articles')->get();
 		if (count($articles) < 1) {
 			$article = new Article();
 			$article->id = 0;
