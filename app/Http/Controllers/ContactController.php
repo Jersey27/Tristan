@@ -6,25 +6,38 @@ use Illuminate\Http\Request;
 
 use App\Contact;
 
+use App\Mail\contactMail;
+
 use App\Http\Requests\ContactRequest;
 
 use Mail;
 
+/**
+ * Classe publique de contact
+ * @author Tristan Lefèvre
+ * @version 1.0 
+ */
 class ContactController extends Controller
 {
+
+    /**
+     * Affiche le formulaire de contact
+     * @return view contact, le formulaire de contact
+     */
     public function index() 
     {
         return view('Contact', ['title' => 'Contact']);
     }
 
+    /**
+     * Enregistre le formulaire de contact
+     * @return view message 
+     * @todo activer le système de mail (mettre en place)
+     * @todo rediriger vers le formulaire et ajouter un message
+     */
     public function store(ContactRequest $request)
     {
-/*        Mail::send(
-            'mailContact',
-            [ 'name' => $request->name, 'email' => $request->email, 'society' => $request->society, 'message' => $request->message ],
-            function($message) {
-            $message->to('tristan.lefevre@viacesi.fr');
-        });*/
+        //Mail::to('tristan.lefevre@viacesi.fr')->send(new contactMail($request->except('_token')));
         $contact = new Contact();
         $contact->name = $request->name;
         $contact->society = $request->society;

@@ -7,14 +7,18 @@ use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 use App\Article;
+/**
+ * Classe publique des articles de blogs
+ * @author Tristan Lefèvre
+ * @version 1.0
+ */
 class ArticleController extends Controller
 {
 
-	public function __contruct(PostRepository $postRepository)
-	{
-		
-	}
-
+	/**
+	 * Liste les articles
+	 * @return view Articles, la page listant les articles (un faux article apparait par défaut si il n'y a aucun article dans la base)
+	 */
 	public function index()
 	{
 		$articles = DB::table('articles')->get();
@@ -28,6 +32,10 @@ class ArticleController extends Controller
 		return view('Articles', ['articles' => $articles]);
 	}
 
+	/**
+	 * Affiche l'article séléctionné
+	 * @return view article, la page de l'article (un faux article apparait par défaut si le faux article est séléctionné depuis la précédente page)
+	 */
     public function getArticle($n) 
     {
 		if ($n == 0) {

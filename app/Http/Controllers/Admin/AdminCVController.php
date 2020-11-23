@@ -14,7 +14,7 @@ use App\langage;
 
 /**
  * @author Tristan
- * @version 1
+ * @version 1.0
  * 
  * Classe d'administration pour la modification du cv.
  */
@@ -38,7 +38,6 @@ class AdminCVController extends Controller
     /**
      * Ajoute un élément du cv en fonction du formulaire utilisé
      * @return view page précédente
-     * @todo faire fonctionner la redirection correctement
      */
     public function addCV(Request $request) {
         switch ($request->section) {
@@ -84,7 +83,6 @@ class AdminCVController extends Controller
     /**
      * Modifie un élément du cv en fonction du formulaire utilisé
      * @return view page précédente
-     * @todo faire fonctionner la redirection correctement
      */
     public function modifycv(Request $request) {
         switch ($request->section) {
@@ -118,7 +116,6 @@ class AdminCVController extends Controller
     /**
      * Supprime un élément du cv en fonction du formulaire utilisé
      * @return view page précédente
-     * @todo faire fonctionner la redirection correctement
      */
     public function removeCV(Request $request) {
         switch ($request->section) {
