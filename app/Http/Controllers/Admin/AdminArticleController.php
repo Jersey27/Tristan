@@ -75,4 +75,17 @@ class AdminArticleController extends Controller
         $article = Article::find($id)->delete();
         return back();
     }
+
+    /**
+     * upload une image pour un article
+     * @return json résultat de l'upload
+     */
+    public function uploadArticleImage(Request $request) {
+        $file = $request->file('file');
+        $path = $file->storeAs('article', $file->getClientOriginalName(), 'photos');
+
+        return response()->json([
+            'location' => env('APP_URL').'/photos/article/'. $file->getClientOriginalName(),
+        ]);
+    }
 }

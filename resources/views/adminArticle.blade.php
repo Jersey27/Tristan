@@ -8,9 +8,7 @@
             @foreach ($articles as $article)
             <ul class="list-group-item d-flex flex-row justify-content-around" class="d-flex flex-row">
                 <a class="border w-100" href="{{url('admin/blog',$article->id)}}">
-                    <div>
-                        <p>{{$article->name}}</p>
-                    </div>
+                    <div class="ml-3 my-auto"> {{$article->name}}</div>
                 </a>
                 {{Form::open(array('route'=>array('removeBlog','id' => $article->id), 'method' => 'DELETE'))}}
                     {{Form::submit('supprimer',['class' => 'btn btn-danger'])}}

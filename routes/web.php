@@ -39,6 +39,7 @@ route::group(["prefix"=>"admin","namespace"=>"Admin"],function() {
     route::get('blog','AdminArticleController@index')->name('adminBlog')->middleware('auth');
     route::get('blog/add','AdminArticleController@newArticle')->name('newBlog')->middleware('auth');
     route::get('blog/{n}','AdminArticleController@modifyArticle')->name('modifyBlog')->middleware('auth');
+    route::post('blog/image','AdminArticleController@uploadArticleImage')->name('uploadArticleImage')->middleware('auth');
     route::post('blog','AdminArticleController@postNewArticle')->name('postNewBlog')->middleware('auth');
     route::put('blog','AdminArticleController@postArticle')->name('postBlog')->middleware('auth');
     route::delete('blog/{id}','AdminArticleController@removeArticle')->name('removeBlog')->middleware('auth');
