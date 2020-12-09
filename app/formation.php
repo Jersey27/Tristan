@@ -8,5 +8,5 @@ class formation extends Model
 {
     protected $primary_key = 'id';
 
-    protected $fillable = ['titre','date','image','description'];
+    protected $fillable = ['titre','date','image','description','visible'];
 }

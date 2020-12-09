@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="{{ csrf_token() }}" />
 		<title>{{ $title ?? 'Tristan Lefèvre' }}</title>
 		<link rel="stylesheet" href="/css/app.css"></style>
 		<style> textarea { resize: none; } </style>
@@ -45,7 +46,7 @@
 					@yield('contenu')
 				</div>
 			</main>
-			<login-component v-show="isModalVisible" @close="closeModal">
+			<modal-form-component v-show="isModalVisible" @close="closeModal">
 				<div slot="header">
 					<h1>Connexion</h1>
 				</div>
@@ -59,7 +60,7 @@
 					{{	Form::submit('se connecter', ['class' => 'btn btn-primary my-1'])}}
 				{{	Form::close()}}
 				</div>
-			</login-component>
+			</modal-form-component>
 		</div>	
 		<script>
 			new Vue({

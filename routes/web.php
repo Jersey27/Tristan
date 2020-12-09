@@ -25,6 +25,7 @@ route::get('contact','ContactController@index')->name('Contact');
 route::post('contact','ContactController@store')->name('postContact');
 
 route::get('cv', 'CVController@index')->name('CV');
+route::post('cv', 'CVController@toggleVisible')->name('toggleVisible')->middleware('auth');
 
 
 route::group(["prefix"=>"admin","namespace"=>"Admin"],function() {

@@ -8,5 +8,5 @@ class competence extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $fillable = ['titre','description'];    
+    protected $fillable = ['titre','description','visible'];    
 }

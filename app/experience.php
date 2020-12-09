@@ -8,5 +8,5 @@ class experience extends Model
 {
     protected $primaryKey = 'id';
 
-    protected $fillable = ['titre','date','company','description'];    
+    protected $fillable = ['titre','date','company','description','visible'];    
 }
