@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubjectColumnInContacts extends Migration
+class CreateInformationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddSubjectColumnInContacts extends Migration
      */
     public function up()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-        $table->string('subject');
+        Schema::create('information', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->text('key');
+            $table->longtext('data');
         });
     }
 
@@ -25,8 +28,6 @@ class AddSubjectColumnInContacts extends Migration
      */
     public function down()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn('subject');
-        });
+        Schema::dropIfExists('information');
     }
 }

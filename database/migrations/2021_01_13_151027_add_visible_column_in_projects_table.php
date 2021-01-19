@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveNiveauColumnInLangageTable extends Migration
+class AddVisibleColumnInProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class RemoveNiveauColumnInLangageTable extends Migration
      */
     public function up()
     {
-        Schema::table('langages', function (Blueprint $table) {
-            $table->dropColumn('niveau');
+        Schema::table('projects', function (Blueprint $table) {
+            $table->boolean('visible')->default(false);
         });
     }
 
@@ -25,8 +25,8 @@ class RemoveNiveauColumnInLangageTable extends Migration
      */
     public function down()
     {
-        Schema::table('langages', function (Blueprint $table) {
-            $table->addColumn('niveau');
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropcolumn('visible');
         });
     }
 }

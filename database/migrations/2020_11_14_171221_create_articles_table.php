@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longtext('text');
+            $table->boolean("visible")->default(false);
             $table->timestamps();
         });
     }

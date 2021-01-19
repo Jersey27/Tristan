@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProjectsTableAndParagraphsTable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,15 +21,6 @@ class AddProjectsTableAndParagraphsTable extends Migration
             $table->text('image');
             $table->longtext('description');
         });
-
-        Schema::create('paragraphs', function (Blueprint $table) {
-            $table->id('paragraph_id');
-            $table->timestamps();
-            $table->foreignId('project_id');
-            $table->text('titre');
-            $table->text('image');
-            $table->longtext('description');
-        });
     }
 
     /**
@@ -40,6 +31,5 @@ class AddProjectsTableAndParagraphsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('projects');
-        Schema::dropIfExists('paragraphs');
     }
 }
