@@ -4,20 +4,32 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Article;
 
-class blogtest extends TestCase
+class BlogTest extends TestCase
 {
+    use DatabaseMigrations;
     /**
      * test for an article page.
      *
      * @return void
      */
-    public function BlogListtest()
+    public function testIndexBlog()
     {
-        $response = $this->get('article/{n}');
+        //Préparation du test
+        $article = Article::factory()->create();
+        $article2 = Article::factory()->create([
+            'visible' => false
+        ]);
+        //Execution du test
+        $response = $this->get('blog');
 
-        $response->assertStatus(200);
+        //Vérification de l'execution du test
+        $response->assertOK();
+        $response->assertSeeText($article->name, $escaped = true);
+        $response->assertDontSeeText($article2->name, $escaped = true);
     }
     
 }
